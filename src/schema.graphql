@@ -1,0 +1,12 @@
+interface Node {
+  id: ID!
+}
+
+type Something implements Node {
+  id: ID!
+  name: String
+}
+
+type Query {
+  foo: Something
+}
