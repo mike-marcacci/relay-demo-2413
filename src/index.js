@@ -10,11 +10,19 @@ const schema = buildSchema(schemaSource);
 
 // the root resolver
 const root = {
-  foo: () => {
-    return {
-      id: 'dc7caf7c-cb5b-44fa-a5a5-0d9c4a24ad17',
-      name: 'Hello World!'
-    };
+  everything: () => {
+    return [
+      {
+        __typename: 'Wine',
+        id: 'dc7caf7c-cb5b-44fa-a5a5-0d9c4a24ad17',
+        vintage: 2013
+      },
+      {
+        __typename: 'Record',
+        id: 'dc7caf7c-cb5b-44fa-a5a5-0d9c4a24ad17',
+        vintage: false
+      }
+    ];
   }
 };
 

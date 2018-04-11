@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 3a356726b491ee4e7ee7b58b07fe3946
+ * @relayHash 1e37fc481383d085881b591a18a616b4
  */
 
 /* eslint-disable */
@@ -11,57 +11,59 @@
 import type { ConcreteRequest } from 'relay-runtime';
 export type AppQueryVariables = {| |};
 export type AppQueryResponse = {|
-  +foo: ?{|
-    +id: string,
-    +name: ?string,
-  |},
+  +everything: ?$ReadOnlyArray<?{|
+    +id?: string,
+    +vintage?: ?number,
+  |}>,
 |};
 */
 
 
 /*
 query AppQuery {
-  foo {
+  everything {
+    __typename
+    ... on Wine {
+      id
+      vintage
+    }
+    ... on Record {
+      id
+      vintage
+    }
     id
-    name
   }
 }
 */
 
 const node/*: ConcreteRequest*/ = (function(){
-var v0 = [
-  {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "foo",
-    "storageKey": null,
-    "args": null,
-    "concreteType": "Something",
-    "plural": false,
-    "selections": [
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "id",
-        "args": null,
-        "storageKey": null
-      },
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "name",
-        "args": null,
-        "storageKey": null
-      }
-    ]
-  }
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "vintage",
+  "args": null,
+  "storageKey": null
+},
+v2 = [
+  v0,
+  v1
+],
+v3 = [
+  v1
 ];
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "AppQuery",
   "id": null,
-  "text": "query AppQuery {\n  foo {\n    id\n    name\n  }\n}\n",
+  "text": "query AppQuery {\n  everything {\n    __typename\n    ... on Wine {\n      id\n      vintage\n    }\n    ... on Record {\n      id\n      vintage\n    }\n    id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -69,15 +71,67 @@ return {
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
-    "selections": v0
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "everything",
+        "storageKey": null,
+        "args": null,
+        "concreteType": null,
+        "plural": true,
+        "selections": [
+          {
+            "kind": "InlineFragment",
+            "type": "Record",
+            "selections": v2
+          },
+          {
+            "kind": "InlineFragment",
+            "type": "Wine",
+            "selections": v2
+          }
+        ]
+      }
+    ]
   },
   "operation": {
     "kind": "Operation",
     "name": "AppQuery",
     "argumentDefinitions": [],
-    "selections": v0
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "everything",
+        "storageKey": null,
+        "args": null,
+        "concreteType": null,
+        "plural": true,
+        "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "__typename",
+            "args": null,
+            "storageKey": null
+          },
+          v0,
+          {
+            "kind": "InlineFragment",
+            "type": "Record",
+            "selections": v3
+          },
+          {
+            "kind": "InlineFragment",
+            "type": "Wine",
+            "selections": v3
+          }
+        ]
+      }
+    ]
   }
 };
 })();
-(node/*: any*/).hash = '135e5b2d647b4fe761fa56f990b3167e';
+(node/*: any*/).hash = 'c398bea62f070d25f46606bd0f106044';
 module.exports = node;

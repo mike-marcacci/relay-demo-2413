@@ -8,9 +8,16 @@ class App extends Component {
         environment={this.props.environment}
         query={graphql`
           query AppQuery {
-            foo {
-              id
-              name
+            everything {
+              ...on Wine {
+                id
+                vintage
+              }
+
+              ...on Record {
+                id
+                vintage
+              }
             }
           }
         `}
@@ -21,7 +28,7 @@ class App extends Component {
           }
 
           return props
-            ? props.foo && props.foo.name
+            ? "Loaded!"
             : "Loading...";
         }}
       />

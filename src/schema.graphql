@@ -2,11 +2,17 @@ interface Node {
   id: ID!
 }
 
-type Something implements Node {
+type Wine implements Node {
   id: ID!
-  name: String
+  vintage: Int
 }
 
+type Record implements Node {
+  id: ID!
+  vintage: Boolean
+}
+
+
 type Query {
-  foo: Something
+  everything: [Node]
 }
