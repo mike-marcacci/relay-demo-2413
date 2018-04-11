@@ -2,7 +2,7 @@ This is a template for creating demos with react and relay. Because our test Gra
 
 Use the command `yarn relay` to run the relay compiler.
 Use the command `yarn start` to run a development server.
-Use the command `yarn build` to build the static site to the `/docs` directory.
+Use the command `yarn build` to build the static site to the `/build` directory.
+Use the command `yarn deploy` to deploy the static site using github pages.
 
-
-We build to the `/docs` directory instead of `/dist` or `/build` to make it easier to host for free on github pages.
+Before deploying, **make sure you change the `homepage` property in `package.json`**!!
