@@ -13,7 +13,7 @@ const root = {
   foo: () => {
     return {
       id: 'dc7caf7c-cb5b-44fa-a5a5-0d9c4a24ad17',
-      name: 'Hello world!'
+      name: 'Hello World!'
     };
   }
 };
